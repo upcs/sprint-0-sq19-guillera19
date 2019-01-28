@@ -1,4 +1,5 @@
 import './functions.js';
 
-
-var number = this.add(3,4);
+function add1(){
+    add(3,4);
+}
