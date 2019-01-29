@@ -3,6 +3,10 @@ var fs = require('fs');
 var url = require('url');
 
 
+var express = require('express');
+var app = express();
+app.use('/css',express.static( '/css'));
+
 // Create a server
 http.createServer( function (request, response) {
                   // Parse the request containing file name
@@ -19,7 +23,8 @@ http.createServer( function (request, response) {
                               // HTTP Status: 404 : NOT FOUND
                               // Content Type: text/plain
                               response.writeHead(404, {'Content-Type': 'text/html'});
-                              } else {
+                              }
+                              else {
                               //Page found
                               // HTTP Status: 200 : OK
                               // Content Type: text/plain
