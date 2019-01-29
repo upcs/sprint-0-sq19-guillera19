@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jest": "^24.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+      "test": "jest",
+      "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upcs/sprint-0-sq19-guillera19.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Avery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/upcs/sprint-0-sq19-guillera19/issues"
+  },
+  "homepage": "https://github.com/upcs/sprint-0-sq19-guillera19#readme"
+}
