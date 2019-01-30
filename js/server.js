@@ -1,11 +1,14 @@
+//Avery Guillermo
+//This is the server.js file.
+
+//This code was obtained from the following websites:
+// https://www.tutorialspoint.com/nodejs/nodejs_web_module.htm
+// https://stackoverflow.com/questions/28822034/simple-node-js-server-that-sends-htmlcss-as-response
+
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
-
-var express = require('express');
-var app = express();
-app.use('/css',express.static( '/css'));
 
 // Create a server
 http.createServer( function (request, response) {
@@ -19,23 +22,30 @@ http.createServer( function (request, response) {
                   fs.readFile(pathname.substr(1), function (err, data) {
                               if (err) {
                               console.log(err);
-                              
                               // HTTP Status: 404 : NOT FOUND
                               // Content Type: text/plain
                               response.writeHead(404, {'Content-Type': 'text/html'});
                               }
                               else {
-                              //Page found
-                              // HTTP Status: 200 : OK
-                              // Content Type: text/plain
-                              response.writeHead(200, {'Content-Type': 'text/html'});
-                              
-                              // Write the content of the file to response body
+                              //check what type of file the request is
+                              var dotoffset = request.url.lastIndexOf('.');
+                              var mimetype = dotoffset == -1
+                              ? 'text/plain'
+                              : {
+                              '.html' : 'text/html',
+                              '.ico' : 'image/x-icon',
+                              '.jpg' : 'image/jpeg',
+                              '.png' : 'image/png',
+                              '.gif' : 'image/gif',
+                              '.css' : 'text/css',
+                              '.js' : 'text/javascript'
+                              }[ request.url.substr(dotoffset) ];
+                              response.setHeader('Content-type' , mimetype);
                               response.write(data.toString());
                               }
-                              
                               // Send the response body
                               response.end();
+                              
                               });
                   }).listen(8081);
 
